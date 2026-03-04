@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hillary Clinton: Legend, Icon, Queen 👑</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue: #002868;
+      --red: #BF0A30;
+      --gold: #FFD700;
+      --cream: #FFF8F0;
+      --sparkle: #FFE566;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: var(--blue);
+      font-family: 'Lato', sans-serif;
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* Floating stars */
+    .stars { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+    .star { position:absolute; animation: floatStar linear infinite; opacity:0; }
+    @keyframes floatStar {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity:0; }
+      10%  { opacity:1; }
+      90%  { opacity:1; }
+      100% { transform: translateY(-10vh) rotate(720deg); opacity:0; }
+    }
+
+    /* HERO */
+    .hero { position:relative; z-index:1; text-align:center; padding:60px 20px 40px; background:linear-gradient(180deg,#000d2e 0%,var(--blue) 100%); }
+    .crown { font-size:5rem; animation:bounce 1.2s ease-in-out infinite; display:block; margin-bottom:-10px; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,8vw,6rem); font-weight:900; color:var(--gold); text-shadow:0 0 30px rgba(255,215,0,.5),3px 3px 0 var(--red); line-height:1.1; }
+    .hero .subtitle { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.1rem,3vw,1.7rem); color:var(--sparkle); margin-top:12px; }
+    .hero .tagline { margin-top:18px; font-size:1rem; font-weight:300; color:#aac4ff; letter-spacing:3px; text-transform:uppercase; }
+
+    /* TICKER */
+    .ticker { background:var(--gold); color:var(--blue); font-weight:700; font-size:.9rem; letter-spacing:2px; text-transform:uppercase; overflow:hidden; white-space:nowrap; padding:10px 0; position:relative; z-index:2; }
+    .ticker-inner { display:inline-block; animation:ticker 28s linear infinite; }
+    @keyframes ticker { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+
+    /* PHOTO SECTION */
+    .photo-section { position:relative; z-index:1; padding:50px 20px; background:linear-gradient(180deg,var(--blue) 0%,#001a50 100%); }
+    .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); color:var(--gold); text-align:center; margin-bottom:36px; text-shadow:2px 2px 0 var(--red); }
+    .photo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; max-width:1100px; margin:0 auto; }
+    .photo-card { border:3px solid var(--gold); border-radius:4px; overflow:hidden; background:#000d2e; transition:transform .3s,box-shadow .3s; box-shadow:0 4px 20px rgba(0,0,0,.4); }
+    .photo-card:hover { transform:translateY(-8px) rotate(1deg); box-shadow:0 12px 40px rgba(255,215,0,.3); }
+    .photo-card img { width:100%; height:300px; object-fit:cover; object-position:top; display:block; }
+    .photo-card .caption { padding:14px 16px; font-family:'Playfair Display',serif; font-style:italic; font-size:1rem; color:var(--gold); text-align:center; background:#000d2e; }
+
+    /* CSS PORTRAIT ILLUSTRATIONS */
+    .portrait-scene {
+      width:100%; height:300px; position:relative; overflow:hidden;
+      display:flex; align-items:flex-end; justify-content:center;
+    }
+    .scene-bg { position:absolute; inset:0; }
+    .scene-official .scene-bg { background:linear-gradient(160deg,#0a1a4a 0%,#1a3a7a 50%,#0d2255 100%); }
+    .scene-rally .scene-bg   { background:linear-gradient(160deg,#1a0a2e 0%,#3d1a6e 50%,#1a0a3a 100%); }
+    .scene-power .scene-bg   { background:linear-gradient(160deg,#1a0005 0%,#5a0010 50%,#1a0005 100%); }
+
+    /* Figure */
+    .figure { position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; margin-bottom:0; }
+    .figure-speaking { margin-bottom:10px; }
+
+    /* Suits (pantsuit!) */
+    .suit {
+      width:90px; height:100px; border-radius:6px 6px 0 0;
+      position:relative; margin-top:auto;
+    }
+    .suit::before, .suit::after {
+      content:''; position:absolute; bottom:0;
+      width:42px; height:100px; border-radius:4px;
+    }
+    .suit::before { left:0; }
+    .suit::after  { right:0; }
+    .suit-blue { background:#1a3a8a; }
+    .suit-blue::before, .suit-blue::after { background:#1a3a8a; }
+    .suit-purple { background:#5a2a8a; }
+    .suit-purple::before, .suit-purple::after { background:#5a2a8a; }
+    .suit-red { background:#8a1a2a; }
+    .suit-red::before, .suit-red::after { background:#8a1a2a; }
+
+    /* Lapels */
+    .suit::before { border-right: 3px solid rgba(255,255,255,0.15); }
+    .suit::after  { border-left:  3px solid rgba(255,255,255,0.15); }
+
+    .neck { width:16px; height:20px; background:#e8b88a; border-radius:4px; margin-bottom:-2px; z-index:2; }
+
+    .head { position:relative; width:64px; height:64px; margin-bottom:-2px; }
+    .hair { position:absolute; width:64px; border-radius:50% 50% 0 0; background:#c9a855; z-index:2; }
+    .hair-official { height:38px; top:-6px; background:linear-gradient(180deg,#c9a855,#a8893a); }
+    .hair-short    { height:32px; top:-4px; background:linear-gradient(180deg,#b8952a,#9a7820); }
+
+    .face {
+      position:absolute; bottom:0; width:54px; height:54px; left:5px;
+      background:linear-gradient(180deg,#f0c898,#e8b070);
+      border-radius:46% 46% 42% 42%;
+      z-index:3; overflow:hidden;
+    }
+    .eyes { display:flex; justify-content:space-evenly; padding-top:16px; }
+    .eye  { width:8px; height:8px; background:#2a2a4a; border-radius:50%; }
+    .smile { width:24px; height:10px; border:3px solid #8a3a2a; border-top:none; border-radius:0 0 12px 12px; margin:6px auto 0; }
+    .smile-big { width:28px; height:13px; }
+
+    /* Scene decorations */
+    .podium-label {
+      position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
+      background:rgba(0,0,0,.6); color:var(--gold); font-size:.65rem;
+      font-weight:700; letter-spacing:2px; padding:4px 10px; border:1px solid var(--gold);
+      white-space:nowrap; z-index:5;
+    }
+    .flag-pin { position:absolute; left:-6px; top:30px; font-size:1.1rem; z-index:5; }
+    .mic      { position:absolute; right:-20px; top:20px; font-size:1.4rem; z-index:5; }
+    .crown-float {
+      position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+      font-size:2rem; animation:bounce 1.4s ease-in-out infinite; z-index:5;
+    }
+
+    .crowd { position:absolute; bottom:0; left:0; right:0; font-size:1.3rem; text-align:center; z-index:2; letter-spacing:2px; opacity:.7; }
+    .confetti { position:absolute; top:10px; left:0; right:0; text-align:center; font-size:1.2rem; z-index:4; animation:sway 2s ease-in-out infinite; }
+    @keyframes sway { 0%,100%{letter-spacing:4px} 50%{letter-spacing:8px} }
+
+    .stars-bg { position:absolute; top:10px; left:0; right:0; text-align:center; font-size:.9rem; color:rgba(255,215,0,.4); letter-spacing:4px; z-index:2; }
+    .power-text {
+      position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+      font-family:'Playfair Display',serif; font-size:2.5rem; font-weight:900;
+      color:var(--gold); text-shadow:0 0 20px rgba(255,215,0,.8); letter-spacing:8px; z-index:5;
+    }
+    .sparkles { position:absolute; top:14px; left:0; right:0; text-align:center; font-size:1.2rem; z-index:4; }
+
+    /* QUOTE BANNER */
+    .quote-banner { position:relative; z-index:1; background:var(--red); padding:50px 24px; text-align:center; }
+    .quote-banner::before, .quote-banner::after { content:'★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★'; display:block; color:rgba(255,255,255,.2); font-size:1.4rem; letter-spacing:4px; margin-bottom:16px; }
+    .quote-banner blockquote { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,3.5vw,2rem); font-style:italic; color:white; max-width:760px; margin:0 auto; line-height:1.6; }
+    .quote-banner cite { display:block; margin-top:14px; font-size:.95rem; font-style:normal; color:var(--sparkle); letter-spacing:2px; text-transform:uppercase; }
+
+    /* LINKS */
+    .links-section { position:relative; z-index:1; padding:60px 20px; background:#000d2e; }
+    .links-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; max-width:1000px; margin:0 auto; }
+    .link-card { background:linear-gradient(135deg,#001a50,#002868); border:2px solid var(--gold); border-radius:4px; padding:28px 24px; text-decoration:none; color:var(--cream); display:flex; flex-direction:column; gap:10px; transition:all .3s; }
+    .link-card:hover { transform:translateY(-5px); border-color:var(--sparkle); box-shadow:0 8px 30px rgba(255,215,0,.2); }
+    .link-card .icon { font-size:2rem; }
+    .link-card .link-title { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--gold); font-weight:700; }
+    .link-card .link-desc { font-size:.9rem; color:#aac4ff; line-height:1.5; }
+    .link-card .arrow { margin-top:auto; color:var(--gold); font-size:1.1rem; font-weight:700; }
+
+    /* FACTS */
+    .facts-section { position:relative; z-index:1; padding:60px 20px; background:linear-gradient(180deg,#001a50,var(--blue)); }
+    .facts-scroll { display:flex; gap:20px; overflow-x:auto; padding-bottom:16px; max-width:1100px; margin:0 auto; scrollbar-color:var(--gold) transparent; }
+    .fact-card { flex:0 0 220px; background:var(--red); border:2px solid var(--gold); border-radius:4px; padding:28px 22px; text-align:center; transition:transform .25s; }
+    .fact-card:hover { transform:scale(1.04) rotate(-1deg); }
+    .fact-card .fact-num { font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--gold); font-weight:900; line-height:1; }
+    .fact-card .fact-label { margin-top:8px; font-size:.85rem; color:white; letter-spacing:1px; text-transform:uppercase; }
+
+    footer { position:relative; z-index:1; background:#000; padding:32px 20px; text-align:center; border-top:3px solid var(--gold); }
+    footer p { color:#556; font-size:.85rem; line-height:1.8; }
+    footer .disclaimer { margin-top:10px; color:#334; font-size:.75rem; font-style:italic; }
+  </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<section class="hero">
+  <span class="crown">👑</span>
+  <h1>Hillary Rodham Clinton</h1>
+  <p class="subtitle">Secretary. Senator. Icon. Legend. Queen.</p>
+  <p class="tagline">The One. The Only. The Eternal.</p>
+</section>
+
+<div class="ticker">
+  <span class="ticker-inner">
+    ⭐ HILLARY 2024? HILLARY 2028? HILLARY FOREVER? ⭐ &nbsp;&nbsp;&nbsp; 🦅 STRONGER TOGETHER 🦅 &nbsp;&nbsp;&nbsp; ⭐ THE PANTSUITS ARE ICONIC ⭐ &nbsp;&nbsp;&nbsp; 🌟 DELETE YOUR ACCOUNT? MORE LIKE DELETE THE COMPETITION 🌟 &nbsp;&nbsp;&nbsp; ⭐ NO ONE HAS DONE MORE FOR EMAIL CULTURE ⭐ &nbsp;&nbsp;&nbsp; 👑 QUEEN OF EVERYTHING 👑 &nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<section class="photo-section">
+  <h2 class="section-title">📸 Iconic Moments of a Legend 📸</h2>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg/400px-Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg"
+           alt="Hillary Clinton official Secretary of State portrait" />
+      <div class="caption">"The Portrait That Launched a Thousand Pantsuits" 🇺🇸</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Hillary_Clinton_by_Gage_Skidmore_2.jpg/400px-Hillary_Clinton_by_Gage_Skidmore_2.jpg"
+           alt="Hillary Clinton speaking" />
+      <div class="caption">"In the middle of addressing her adoring fans" 🎤</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Hillary_Clinton_%282016%29.jpg/400px-Hillary_Clinton_%282016%29.jpg"
+           alt="Hillary Clinton 2016" />
+      <div class="caption">"The Year of the Pantsuit Revolution" ✨</div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-banner">
+  <blockquote>
+    "I am the most transparent public figure in modern American history."
+  </blockquote>
+  <cite>— Hillary Clinton, probably via private email server 📧</cite>
+</section>
+
+<section class="links-section">
+  <h2 class="section-title">🌐 Essential Hillary Resources 🌐</h2>
+  <div class="links-grid">
+    <a href="https://www.clintonfoundation.org" target="_blank" rel="noopener" class="link-card">
+      <span class="icon">🏛️</span>
+      <div class="link-title">The Clinton Foundation</div>
+      <div class="link-desc">The official home of the Clinton Foundation's global philanthropic work.</div>
+      <div class="arrow">Visit →</div>
+    </a>
+    <a href="https://hillaryclinton.com" target="_blank" rel="noopener" class="link-card">
+      <span class="icon">🌟</span>
+      <div class="link-title">HillaryClinton.com</div>
+      <div class="link-desc">The official website of Secretary Clinton herself.</div>
+      <div class="arrow">Visit →</div>
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Hillary_Clinton" target="_blank" rel="noopener" class="link-card">
+      <span class="icon">📚</span>
+      <div class="link-title">Wikipedia: The Hillary Chronicles</div>
+      <div class="link-desc">A comprehensive archive of her legendary career, from First Lady to global diplomat.</div>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="https://twitter.com/HillaryClinton" target="_blank" rel="noopener" class="link-card">
+      <span class="icon">🐦</span>
+      <div class="link-title">Hillary on Twitter/X</div>
+      <div class="link-desc">Follow the legend herself for hot takes and timeless wisdom.</div>
+      <div class="arrow">Follow →</div>
+    </a>
+    <a href="https://www.goodreads.com/book/show/31869108-what-happened" target="_blank" rel="noopener" class="link-card">
+      <span class="icon">📖</span>
+      <div class="link-title">"What Happened" — The Book</div>
+      <div class="link-desc">Her bestselling memoir. A classic. A triumph. A masterpiece of our time.</div>
+      <div class="arrow">Read →</div>
+    </a>
+    <a href="https://clintonpresidentialcenter.org" target="_blank" rel="noopener" class="link-card">
+      <span class="icon">🏛️</span>
+      <div class="link-title">Clinton Presidential Center</div>
+      <div class="link-desc">The official Clinton Presidential Center & Museum in Little Rock, Arkansas.</div>
+      <div class="arrow">Explore →</div>
+    </a>
+  </div>
+</section>
+
+<section class="facts-section">
+  <h2 class="section-title">🌟 By The Numbers 🌟</h2>
+  <div class="facts-scroll">
+    <div class="fact-card"><div class="fact-num">600+</div><div class="fact-label">Pantsuits (estimated)</div></div>
+    <div class="fact-card"><div class="fact-num">112</div><div class="fact-label">Countries Visited as Sec. of State</div></div>
+    <div class="fact-card"><div class="fact-num">30k</div><div class="fact-label">Emails. Just emails. Totally normal.</div></div>
+    <div class="fact-card"><div class="fact-num">65.8M</div><div class="fact-label">Popular votes in 2016 👀</div></div>
+    <div class="fact-card"><div class="fact-num">∞</div><div class="fact-label">Opinions About Her</div></div>
+    <div class="fact-card"><div class="fact-num">1</div><div class="fact-label">Iconic "Delete Your Account" tweet</div></div>
+  </div>
+</section>
+
+<footer>
+  <p>💙 HillaryClinton.com &nbsp;|&nbsp; ClintonFoundation.org &nbsp;|&nbsp; The Greatest Fan Page on Earth 💙</p>
+  <p class="disclaimer">⚠️ This page is a private joke between friends and is not affiliated with, endorsed by, or associated with Hillary Clinton, the Clinton Foundation, or any related entities. We don't have a server. ⚠️</p>
+</footer>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  const emojis = ['⭐','🌟','✨','💫','🇺🇸','👑'];
+  for (let i = 0; i < 30; i++) {
+    const s = document.createElement('span');
+    s.classList.add('star');
+    s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.animationDuration = (10 + Math.random() * 20) + 's';
+    s.style.animationDelay = (Math.random() * 20) + 's';
+    s.style.fontSize = (0.8 + Math.random() * 1.4) + 'rem';
+    starsEl.appendChild(s);
+  }
+</script>
+</body>
+</html>
